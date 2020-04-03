@@ -5,8 +5,8 @@ LICENSE="BSD 2-Clause License"
 MAINTAINER="Ants Aasma <ants@cybertec.at>"
 DESCRIPTION="Manages a virtual IP based on state kept in etcd/consul."
 HOMEPAGE="http://www.cybertec.at/"
-GIT="git://github.com/cybertec-postgresql/vip-manager.git"
-GITBROWSER="https://github.com/cybertec-postgresql/vip-manager"
+GIT="git://github.com/tpo/vip-manager.git"
+GITBROWSER="https://github.com/tpo/vip-manager"
 
 
 all: vip-manager

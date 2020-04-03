@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/coreos/etcd/client"
-	"github.com/cybertec-postgresql/vip-manager/vipconfig"
+	"github.com/tpo/vip-manager/vipconfig"
 )
 
 const (

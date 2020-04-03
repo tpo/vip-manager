@@ -3,7 +3,7 @@ package checker
 import (
 	"context"
 	"errors"
-	"github.com/cybertec-postgresql/vip-manager/vipconfig"
+	"github.com/tpo/vip-manager/vipconfig"
 )
 
 var ErrUnsupportedEndpointType = errors.New("given endpoint type not supported")

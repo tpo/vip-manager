@@ -1,6 +1,6 @@
 FROM golang:1.9.4-alpine3.7 AS build
 ENV GOPATH /app
-WORKDIR /app/src/github.com/cybertec-postgresql/vip-manager
+WORKDIR /app/src/github.com/tpo/vip-manager
 COPY . .
 RUN go install
 FROM alpine:latest

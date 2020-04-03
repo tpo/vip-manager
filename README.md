@@ -4,8 +4,8 @@ Manages a virtual IP based on state kept in etcd or Consul. Monitors state in et
 
 ## building
 1. To make sure that internal includes (the vipconfig and the checker package) are satisfied, place the base directory of this project properly into your `$GOPATH`.
-    The resulting location should be `$GOPATH/src/github.com/cybertec-postgresql/vip-manager/`. The easiest way to do this is:
-    ```go get github.com/cybertec-postgresql/vip-manager```
+    The resulting location should be `$GOPATH/src/github.com/tpo/vip-manager/`. The easiest way to do this is:
+    ```go get github.com/tpo/vip-manager```
 2. Build the binary using `make`.
 3. To build your own .deb or .rpm, `fpm` is required.
     Install it, add it to your path and try running `make package`, which will generate a .deb package and will also convert that into a matching .rpm file.

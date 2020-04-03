@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/cybertec-postgresql/vip-manager/vipconfig"
+	"github.com/tpo/vip-manager/vipconfig"
 	"github.com/hashicorp/consul/api"
 )
 

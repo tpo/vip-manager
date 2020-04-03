@@ -13,8 +13,8 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"github.com/cybertec-postgresql/vip-manager/checker"
-	"github.com/cybertec-postgresql/vip-manager/vipconfig"
+	"github.com/tpo/vip-manager/checker"
+	"github.com/tpo/vip-manager/vipconfig"
 	//"github.com/milosgajdos83/tenus"
 )
 
