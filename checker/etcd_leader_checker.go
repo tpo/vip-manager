@@ -2,11 +2,24 @@ package checker
 
 import (
 	"context"
+	"crypto/tls"
+	"crypto/x509"
+	"fmt"
+	"io/ioutil"
 	"log"
+	"net"
+	"net/http"
+	"os"
 	"time"
 
 	"github.com/coreos/etcd/client"
 	"github.com/cybertec-postgresql/vip-manager/vipconfig"
+)
+
+const (
+	envEtcdCaFile   = "ETCD_TRUSTED_CA_FILE"
+	envEtcdCertFile = "ETCD_CERT_FILE"
+	envEtcdKeyFile  = "ETCD_KEY_FILE"
 )
 
 type EtcdLeaderChecker struct {
@@ -18,14 +31,77 @@ type EtcdLeaderChecker struct {
 //naming this c_conf to avoid conflict with conf in etcd_leader_checker.go
 var e_conf vipconfig.Config
 
+func getConfigParameter(conf string, env string) string {
+	if conf == "none" || conf == "" {
+		return os.Getenv(env)
+	}
+
+	return conf
+}
+
+func getTransport(conf vipconfig.Config) (client.CancelableTransport, error) {
+	var caCertPool *x509.CertPool
+
+	// create valid CertPool only if the ca certificate file exists
+	if caCertFile := getConfigParameter(conf.Etcd_ca_file, envEtcdCaFile); caCertFile != "" {
+		caCert, err := ioutil.ReadFile(caCertFile)
+		if err != nil {
+			return nil, fmt.Errorf("cannot load CA file: %s", err)
+		}
+
+		caCertPool = x509.NewCertPool()
+		caCertPool.AppendCertsFromPEM(caCert)
+	}
+
+	certFile := getConfigParameter(conf.Etcd_cert_file, envEtcdCertFile)
+
+	keyFile := getConfigParameter(conf.Etcd_key_file, envEtcdKeyFile)
+
+	var certificates []tls.Certificate
+
+	// create valid []Certificate only if the client cert and key files exists
+	if certFile != "" && keyFile != "" {
+		cert, err := tls.LoadX509KeyPair(certFile, keyFile)
+		if err != nil {
+			return nil, fmt.Errorf("cannot load client cert or key file: %s", err)
+		}
+
+		certificates = []tls.Certificate{cert}
+	}
+
+	var tlsClientConfig *tls.Config
+
+	if certificates != nil || caCertPool != nil {
+		tlsClientConfig = &tls.Config{
+			RootCAs:      caCertPool,
+			Certificates: certificates,
+		}
+	}
+
+	return &http.Transport{
+		Proxy: http.ProxyFromEnvironment,
+		Dial: (&net.Dialer{
+			Timeout:   30 * time.Second,
+			KeepAlive: 30 * time.Second,
+		}).Dial,
+		TLSClientConfig:     tlsClientConfig,
+		TLSHandshakeTimeout: 10 * time.Second,
+	}, nil
+}
+
 //func NewEtcdLeaderChecker(endpoint, key, nodename string, etcd_user string, etcd_password string) (*EtcdLeaderChecker, error) {
 func NewEtcdLeaderChecker(con vipconfig.Config) (*EtcdLeaderChecker, error) {
 	e_conf = con
 	e := &EtcdLeaderChecker{key: e_conf.Key, nodename: e_conf.Nodename}
 
+	transport, err := getTransport(e_conf)
+	if err != nil {
+		return nil, err
+	}
+
 	cfg := client.Config{
 		Endpoints:               e_conf.Endpoints,
-		Transport:               client.DefaultTransport,
+		Transport:               transport,
 		HeaderTimeoutPerRequest: time.Second,
 		Username:                e_conf.Etcd_user,
 		Password:                e_conf.Etcd_password,
