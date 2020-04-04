@@ -25,7 +25,8 @@ Manages a virtual IP based on state kept in etcd or Consul. Monitors state in et
 * Edit config and start the service.
 
 ## Configuration
-The configuration can be passed to the executable through argument flags or through a YAML config file.
+The configuration can be passed to the executable through argument flags or through a YAML config file. Run `vip-manager --help` to see the available flags.
+
 > The location of the YAML config file can be specified with the -config flag.
 > An exemplary config file is installed into `/etc/default/vip-manager_default.yml` or is available in the vipconfig directory in the repository of the software.
 
@@ -39,7 +40,7 @@ These configuration keys are currently mandatory:
 | VIP_KEY   | /service/batman/leader | Key to monitor. Must match `<namespace>/<scope>/leader` from Patroni.      |
 | VIP_HOST  | serverX  | Value to trigger on. Must match `<name>` from Patroni.                                   |
 | VIP_TYPE  | etcd     | Type of endpoint (etcd or consul)                                                        |
-| VIP_ENDPOINT | http://10.1.2.3:2379 | Location of endpoint (etcd or consul)                                     |
+| VIP_ENDPOINT | http://10.1.2.3:2379 | Location of one or more endpoints (etcd or consul). Separate multiple endpoints with commas |
 
 These configuration keys are optional:
 
