@@ -6,6 +6,7 @@ This is a fork of cybertec's vip-manager. It has these additional features:
 
 * supports multiple etcd endpoints
 * supports TLS/certificate authentication with etcd and TLS/encrypted etcd communitcation
+* supports Hetzner Cloud floating IPs
 
 ## building
 1. To make sure that internal includes (the vipconfig and the checker package) are satisfied, place the base directory of this project properly into your `$GOPATH`.
