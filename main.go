@@ -38,7 +38,7 @@ var endpointType = flag.String("type", "etcd", "type of endpoint used for key st
 var endpoints = flag.String("endpoint", "http[s]://localhost:2379[,http[s]://host:port,..]", "endpoint")
 var interval = flag.Int("interval", 1000, "DCS scan interval in milliseconds")
 
-var hostingType = flag.String("hostingtype", "basic", "type of hosting. Supported values: self, hetzner")
+var hostingType = flag.String("hostingtype", "basic", "type of hosting. Supported values: basic, hetzner, hetzner_floating_ip")
 
 var conf vipconfig.Config
 
