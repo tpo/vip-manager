@@ -72,8 +72,8 @@ node interface, Hetzner will route it to the current one.
 
 #### FailoverIP
 
-[Hetzner failover-IP documentation](https://wiki.hetzner.de/index.php/Failover/en)
-[Hetzner Robot failover-IP API documentation](https://robot.your-server.de/doc/webservice/en.html#failover)
+* [Hetzner failover-IP documentation](https://wiki.hetzner.de/index.php/Failover/en)
+* [Hetzner Robot failover-IP API documentation](https://robot.your-server.de/doc/webservice/en.html#failover)
 
 * set `hosting_type` to `hetzner` in `/etc/default/vip-manager.yml`
 * configure credentials in `/etc/hetzner`:
@@ -85,8 +85,8 @@ pass="myPassword"
 
 #### FloatingIP
 
-[Hetzner floating-IP documentation](https://wiki.hetzner.de/index.php/CloudServer/en#What_are_floating_IPs_and_how_do_they_work.3F)
-[Hetzner Cloud failover-IP API documentation](https://docs.hetzner.cloud/#floating-ips)
+* [Hetzner floating-IP documentation](https://wiki.hetzner.de/index.php/CloudServer/en#What_are_floating_IPs_and_how_do_they_work.3F)
+* [Hetzner Cloud failover-IP API documentation](https://docs.hetzner.cloud/#floating-ips)
 
 * set `hosting_type` to `hetzner_floating_ip` in `/etc/default/vip-manager.yml`
 * configure credentials in `/etc/hetzner`:
