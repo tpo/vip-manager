@@ -2,6 +2,11 @@
 
 Manages a virtual IP based on state kept in etcd or Consul. Monitors state in etcd 
 
+This is a fork of cybertec's vip-manager. It has these additional features:
+
+* supports multiple etcd endpoints
+* supports TLS/certificate authentication with etcd and TLS/encrypted etcd communitcation
+
 ## building
 1. To make sure that internal includes (the vipconfig and the checker package) are satisfied, place the base directory of this project properly into your `$GOPATH`.
     The resulting location should be `$GOPATH/src/github.com/tpo/vip-manager/`. The easiest way to do this is:
@@ -98,4 +103,5 @@ serv='7890123'
 ## Authors
 
 * Cybertec Schönig & Schönig GmbH, https://www.cybertec-postgresql.com
+* https://github.com/gandalfmagic/
 * Tomáš Pospíšek @ Sourcepole.ch
