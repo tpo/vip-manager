@@ -2,7 +2,8 @@
 
 Manages a virtual IP based on state kept in etcd or Consul. Monitors state in etcd 
 
-This is a fork of cybertec's vip-manager. It has these additional features:
+This is a fork of [Cybertec's vip-manager](https://github.com/cybertec-postgresql/vip-manager).
+It has these additional features:
 
 * supports multiple etcd endpoints
 * supports TLS/certificate authentication with etcd and TLS/encrypted etcd communitcation
