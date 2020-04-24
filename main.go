@@ -67,7 +67,7 @@ func main() {
 	flag.Parse()
 
 	if *versionHint == true {
-		fmt.Println("version 0.6.2")
+		fmt.Println("version 0.6.3")
 		return
 	}
 

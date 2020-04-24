@@ -1,3 +1,9 @@
+vip-manager (0.6.3-1) unstable; urgency=low
+
+  * add support for Hetzner Floating IPs
+
+ -- Tomáš Pospíšek <tpo_deb@sourcepole.ch> Fri, 24 Apr 2020 12:47:49 +0200
+
 vip-manager (0.6.2-1) unstable; urgency=low
 
   * enable TLS configuration from cli flags and from yaml file
