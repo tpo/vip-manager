@@ -111,7 +111,7 @@ Either:
 * run `vip-manager` with `-verbose` flag or
 * set `verbose` to `true` in `/etc/default/vip-manager.yml`
 
-(currently only supported for `hetzner`)
+(currently only supported for `hetzner` and `hetzner_floating_ip`)
 
 ## Authors
 

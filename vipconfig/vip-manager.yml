@@ -37,5 +37,5 @@ consul_token: "Julian's secret token"
 retry_num: 2
 retry_after: 250  #in milliseconds
 
-# verbose logs (currently only supported for hetzner)
+# verbose logs (currently only supported for hetzner and hetzner_floating_ip)
 verbose: false
