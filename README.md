@@ -77,7 +77,7 @@ node interface, Hetzner will route it to the current one.
 * [Hetzner failover-IP documentation](https://wiki.hetzner.de/index.php/Failover/en)
 * [Hetzner Robot failover-IP API documentation](https://robot.your-server.de/doc/webservice/en.html#failover)
 
-* set `hosting_type` to `hetzner` in `/etc/default/vip-manager.yml`
+* set `hostingtype` to `hetzner` in `/etc/default/vip-manager.yml`
 * configure credentials in `/etc/hetzner`:
 
 ```
