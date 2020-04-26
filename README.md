@@ -87,6 +87,15 @@ ipid='123456'
 serv='7890123'
 ```
 
+## Debugging
+
+Either:
+
+* run `vip-manager` with `-verbose` flag or
+* set `verbose` to `true` in `/etc/default/vip-manager.yml`
+
+(currently only supported for `hetzner` and `hetzner_floating_ip`)
+
 ## Authors
 
 * Cybertec Schönig & Schönig GmbH, https://www.cybertec-postgresql.com

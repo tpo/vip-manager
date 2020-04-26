@@ -36,6 +36,8 @@ var interval = flag.Int("interval", 1000, "DCS scan interval in milliseconds")
 
 var hostingType = flag.String("hostingtype", "basic", "type of hosting. Supported values: basic, hetzner, hetzner_floating_ip")
 
+var verbose = flag.Bool("verbose", false, "be verbose. Currently only implemented for hetzner and hetzner_floating_ip")
+
 var conf vipconfig.Config
 
 func checkFlag(f string, name string) {
