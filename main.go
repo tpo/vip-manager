@@ -40,6 +40,8 @@ var interval = flag.Int("interval", 1000, "DCS scan interval in milliseconds")
 
 var hostingType = flag.String("hostingtype", "basic", "type of hosting. Supported values: basic, hetzner, hetzner_floating_ip")
 
+var verbose = flag.Bool("verbose", false, "be verbose. Currently only implemented for hetzner")
+
 var conf vipconfig.Config
 
 func checkFlag(f string, name string) {
@@ -78,7 +80,9 @@ func main() {
 	conf = vipconfig.Config{Ip: *ip, Mask: *mask, Iface: *iface, HostingType: *hostingType,
 		Key: *key, Nodename: *host, Endpoint_type: *endpointType, Endpoints: endpointArray,
 		Etcd_user: *etcd_user, Etcd_password: *etcd_password, Etcd_ca_file: *etcd_ca_file,
-		Etcd_cert_file: *etcd_cert_file, Etcd_key_file: *etcd_key_file, Interval: *interval}
+		Etcd_cert_file: *etcd_cert_file, Etcd_key_file: *etcd_key_file, Interval: *interval,
+		Verbose: *verbose,
+	}
 
 	if *configFile != "" {
 		yamlFile, err := ioutil.ReadFile(*configFile)
@@ -143,6 +147,7 @@ func main() {
 			Retry_after: conf.Retry_after,
 		},
 		states,
+		conf.Verbose,
 	)
 	if err != nil {
 		log.Fatalf("Problems with generating the virtual ip manager: %s", err)

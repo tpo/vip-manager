@@ -10,6 +10,7 @@ It has these additional features:
 * supports Hetzner Cloud floating IPs
 
 ## building
+
 1. To make sure that internal includes (the vipconfig and the checker package) are satisfied, place the base directory of this project properly into your `$GOPATH`.
     The resulting location should be `$GOPATH/src/github.com/tpo/vip-manager/`. The easiest way to do this is:
     ```go get github.com/tpo/vip-manager```
@@ -32,6 +33,7 @@ It has these additional features:
 * Edit config and start the service.
 
 ## Configuration
+
 The configuration can be passed to the executable through argument flags or through a YAML config file. Run `vip-manager --help` to see the available flags.
 
 > The location of the YAML config file can be specified with the -config flag.
@@ -101,6 +103,15 @@ ipid='123456'
 # `curl -H "Authorization: Bearer $tokn" 'https://api.hetzner.cloud/v1/servers'`
 serv='7890123'
 ```
+
+## Debugging
+
+Either:
+
+* run `vip-manager` with `-verbose` flag or
+* set `verbose` to `true` in `/etc/default/vip-manager.yml`
+
+(currently only supported for `hetzner`)
 
 ## Authors
 
