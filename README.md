@@ -8,6 +8,7 @@ It has these additional features:
 * supports multiple etcd endpoints
 * supports TLS/certificate authentication with etcd and TLS/encrypted etcd communitcation
 * supports Hetzner Cloud floating IPs
+* allows option for verbose logging of Hetzner API requests and replies
 
 ## building
 
