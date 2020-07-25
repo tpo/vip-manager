@@ -37,13 +37,13 @@ type HetznerFloatingIPConfigurer struct {
 	verbose      bool
 }
 
-func NewHetznerFloatingIPConfigurer(config *IPConfiguration, verbose_ bool) (*HetznerFloatingIPConfigurer, error) {
+func NewHetznerFloatingIPConfigurer(config *IPConfiguration, verbose bool) (*HetznerFloatingIPConfigurer, error) {
 	c := &HetznerFloatingIPConfigurer{
 		IPConfiguration: config,
 		cachedState: UNKNOWN,
 		serverID:     0,
 		lastAPICheck: time.Unix(0, 0),
-		verbose: verbose_}
+		verbose: verbose}
 
 	return c, nil
 }
